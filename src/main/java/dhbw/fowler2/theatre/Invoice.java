@@ -1,6 +1,8 @@
 package dhbw.fowler2.theatre;
 
-import java.util.List;
+
+import java.text.NumberFormat;
+import java.util.*;
 
 public class Invoice {
 
@@ -12,9 +14,11 @@ public class Invoice {
         this.performances = performances;
     }
 
-    public double calculation() {
-        double totalamount = 0;
-        for (var perf : invoice.performances) {
+    public double calculation(Map<String,Play>plays) {
+        double totalAmount = 0;
+        String result = "";
+
+        for (var perf : performances) {
             var play = plays.get(perf.playID);
             var thisAmount = 0;
 
@@ -36,16 +40,17 @@ public class Invoice {
                     throw new Error("unknown type: ${play.type}");
             }
             // print line for this order
+            NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
             result += String.format("  %s: %s (%s seats)\n", play.name, frmt.format(thisAmount / 100), perf.audience);
             totalAmount += thisAmount;
         }
         return totalAmount;
     }
 
-    public double creditCalculation() {
+    public double creditCalculation(Map<String,Play>plays) {
         double totalamount = 0;
         int volumeCredits = 0;
-        for (var perf : invoice.performances) {
+        for (var perf : performances) {
             var play = plays.get(perf.playID);
 
             // add volume credits

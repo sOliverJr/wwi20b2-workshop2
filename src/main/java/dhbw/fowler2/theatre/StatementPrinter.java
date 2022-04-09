@@ -13,8 +13,8 @@ public class StatementPrinter {
 
         NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
 
-        result += String.format("Amount owed is %s\n", frmt.format(invoice.calculation() / 100));
-        result += String.format("You earned %s credits\n", invoice.creditCalculation);
+        result += String.format("Amount owed is %s\n", frmt.format(invoice.calculation(plays) / 100));
+        result += String.format("You earned %s credits\n", invoice.creditCalculation(plays));
         return result;
     }
 
