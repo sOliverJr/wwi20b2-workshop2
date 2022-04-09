@@ -14,8 +14,8 @@ public class Invoice {
         this.performances = performances;
     }
 
-    public double calculation(Map<String,Play>plays) {
-        double totalAmount = 0;
+    public int calculation(Map<String,Play>plays) {
+        int totalAmount = 0;
         String result = "";
 
         for (var perf : performances) {
@@ -47,8 +47,8 @@ public class Invoice {
         return totalAmount;
     }
 
-    public double creditCalculation(Map<String,Play>plays) {
-        double totalamount = 0;
+    public int creditCalculation(Map<String,Play>plays) {
+        
         int volumeCredits = 0;
         for (var perf : performances) {
             var play = plays.get(perf.playID);
