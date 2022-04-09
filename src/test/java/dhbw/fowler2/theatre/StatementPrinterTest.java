@@ -51,6 +51,7 @@ public class StatementPrinterTest {
         
         var result = statementPrinter.HtmlStatement(invoice);
 
+        System.out.print(result);
 
         Assert.assertEquals("<h1>Statement for BigCo</h1>\n" +
         "<table>\n" + 
@@ -59,7 +60,7 @@ public class StatementPrinterTest {
         "<tr><td>Othello</td><td>40</td><td>$50,000.00</td></tr>\n" +
         "</table>\n" +
         "<p>Amount owed is <em>$1,730.00</em></p>\n" + 
-        "<p>You earned <em>47</em> credits</p>", result);
+        "<p>You earned <em>47</em> credits</p>\n", result);
     }
 
     
